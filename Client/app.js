@@ -1,12 +1,13 @@
 (function($){
     function processForm( e ){
         var dict = {
-        	Title : this["title"].value,
+            Title : this["title"].value,
+            Genre : this["genre"].value,
         	Director: this["director"].value
         };
 
         $.ajax({
-            url: 'https://localhost:44325/api/movie',
+            url: 'https://localhost:5001/api/movie',
             dataType: 'json',
             type: 'post',
             contentType: 'application/json',
