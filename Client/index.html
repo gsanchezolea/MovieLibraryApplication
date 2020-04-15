@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>jQuery AJAX POST Form</title>
+    <title>jQuery AJAX</title>
     <meta charset="utf-8">
 </head>
 <body>
 
-<div id="response">
-    <pre></pre>
-</div>
+<h1>Movie Library</h1>
 
-<form id="my-form">
-    <input type="text" name="title" placeholder="Title" />
-    <input type="text" name="gener" placeholder="Genre"/>
-    <input type="text" name="director" placeholder="Director" />
+<p<><labek>Title : </labek><input type="text" id="title"></p>
+<p<><labek>Genre : </labek><input type="text" id="genre"></p>
+<p<><labek>Director : </labek><input type="text" id="director"></p>
+<button id="add-movie">Add Movie</button>
 
-    <button type="submit">Submit</button>
-</form>
+
+<h2>Movies</h2>
+<ul id="movies"></ul>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="./app.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 </body>
 </html>

@@ -49,7 +49,9 @@ namespace WebAPISample.Controllers
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
-            return Ok(_context.Movies);
+            var movieOut = _context.Movies.Where(m => m.Title == movie.Title).SingleOrDefault();
+
+            return Ok(movieOut);
         }
 
         // PUT api/movie/5
@@ -58,7 +60,10 @@ namespace WebAPISample.Controllers
         {
             // Update movie in db logic
             var dbMovie = _context.Movies.Find(value.MovieId);
-            
+            if (dbMovie == null)
+            {
+                return BadRequest();
+            }
             if(value.Title != null)
             {
                 dbMovie.Title = value.Title;
