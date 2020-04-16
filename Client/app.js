@@ -7,10 +7,11 @@ $(function () {
 
     var movieTemplate = "" +
     "<li>" +
-    "<p><strong>Title :</strong> {{title}},</p>" +
-    "<p><strong><Genre : </strong> {{genre}},</p>" +
-    "<p><strong>Director : </strong>{{director}}.</p>" +
-    "<button data-id='{{id}}' class='remove'>Remove</button>" +
+    "<p><strong>Title : </strong> {{title}}</p>" +
+    "<p><strong>Genre : </strong> {{genre}}</p>" +
+    "<p><strong>Director : </strong>{{director}}</p>" +
+    "<button data-id='{{movieId}}' class='remove'>Remove</button>" +
+    "<button data-id='{{movieId}}' class='update'>Update</button>" +
     "</li>";
 
     function displayMovie(movie){
@@ -37,7 +38,7 @@ $(function () {
             title: $title.val(),
             genre: $genre.val(),
             director: $director.val(),
-        }
+        };
 
         $.ajax({
             type: 'POST',
@@ -50,8 +51,43 @@ $(function () {
             error: function() {
                 alert('Error Attempting to Save Movie to Database');
             }
-        })
+        });
         
     })
+
+    $movies.delegate('.remove','click', function(){
+
+        var $li = $(this).closest('li');
+
+        $.ajax({
+            type: 'DELETE',
+            url: 'https://localhost:44325/api/movie/' + $(this).attr('data-id'),
+            success: function(){
+                $li.remove();
+            }
+        });
+    });
+
+    $movies.delegate('.update', 'click', function(){
+
+        var $li = $(this).closest('li');
+
+        var updatedMovie = {            
+            title: prompt('Change Title?'),
+            genre: prompt('Change Genre?'),
+            director: prompt('Change Director?'),            
+        }
+
+        $.ajax({
+            type: 'PUT',
+            url: 'https://localhost:44325/api/movie/' + $(this).attr('data-id'),
+            contentType: 'application/json',
+            data: JSON.stringify(updatedMovie),
+            success: function(){
+                alert('SUccess')
+            }
+        });
+
+    });
 
 });

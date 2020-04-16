@@ -1,0 +1,45 @@
+div#add-container{
+    padding: 20px;
+    border: 2px;
+    border-color: blue;
+    margin-top: 10px;
+}
+div#movie-container{
+    position: relative;
+    top: 120px;
+    left: 100px;  
+}
+
+h1#movie-library{
+    position: relative;
+    top: 15px;
+    left: 100px;  
+}
+
+li{
+    padding: 15px;
+    list-style: none;
+    margin: 10px;
+    background-color: gray;
+    border-radius: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+button.remove{
+    margin: 5px;
+}
+
+button.update{
+    margin: 5px;
+}
+
+body {
+    background-image: url("moviepic.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    margin-right: 200px;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+

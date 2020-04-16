@@ -55,31 +55,31 @@ namespace WebAPISample.Controllers
         }
 
         // PUT api/movie/5
-        [HttpPut]
-        public IActionResult Put([FromBody]Movie value)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id,[FromBody]Movie value)
         {
             // Update movie in db logic
-            var dbMovie = _context.Movies.Find(value.MovieId);
-            if (dbMovie == null)
+            var dbMovie = _context.Movies.Find(id);
+            if (id != dbMovie.MovieId)
             {
                 return BadRequest();
             }
-            if(value.Title != null)
+            if (value.Title != "")
             {
                 dbMovie.Title = value.Title;
             }
-            if (value.Genre != null)
+            if (value.Genre != "")
             {
                 dbMovie.Genre = value.Genre;
             }
-            if (value.Director != null)
+            if (value.Director != "")
             {
                 dbMovie.Director = value.Director;
             }
       
             _context.SaveChanges();
 
-            return Ok(_context.Movies);
+            return NoContent();
         }
 
         // DELETE api/movie/5
